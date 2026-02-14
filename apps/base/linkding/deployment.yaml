@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: linkding
-spec: 
+spec:
   replicas: 1
-  selector: 
-    matchLabels: 
-      apps: linkding
-    template: 
-      metadata: 
-        labels: 
-          app: linkding
-      spec: 
-        containers: 
-          - name: linkding
-            image: sissbruecker/linkding:1.32.0
-            ports: 
-              - containerport: 9090
-            
+  selector:
+    matchLabels:
+      app: linkding
+  template:
+    metadata:
+      labels:
+        app: linkding
+    spec:
+      containers:
+        - name: linkding
+          image: sissbruecker/linkding:1.31.0
+          ports:
+            - containerPort: 9090
