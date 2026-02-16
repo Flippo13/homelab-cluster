@@ -5,7 +5,7 @@ metadata:
   namespace: linkding 
 spec:
   accessMode: 
-    - ReadWriteOnce
+      - ReadWriteOnce
     resources:
       requests:
         storage: 1Gi
