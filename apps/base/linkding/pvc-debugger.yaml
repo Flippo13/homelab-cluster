@@ -4,7 +4,7 @@ metadata:
     name: volume-debugger
 spec:
     volumes: 
-        - name: linkding-data 
+        - name: volume-to-data 
     PersistentVolumeClaim: 
         claimName: linkding-data-pvc 
     containers: 
