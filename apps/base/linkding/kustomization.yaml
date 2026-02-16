@@ -4,3 +4,4 @@ resources:
   - namespace.yaml
   - full_deployment.yaml
   - pvc-debugger.yaml
+  - service.yaml
