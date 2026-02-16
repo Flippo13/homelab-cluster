@@ -3,5 +3,4 @@ kind: Kustomization
 resources: 
   - namespace.yaml
   - full_deployment.yaml
-  - storage.yaml
   - pvc-debugger.yaml
