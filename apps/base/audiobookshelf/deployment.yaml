@@ -21,22 +21,22 @@ spec:
         - configMapRef:
             name: audiobookshelf-config
       volumeMounts:
+            - mountPath: /config
+              name: audiobookshelf-config
+            - mountPath: /metadata
+              name: audiobookshelf-metadata
+            - mountPath: /audiobooks
+              name: audiobookshelf-audiobooks
+
+      restartPolicy: Always
+
+      volumes:
         - name: audiobookshelf-config
-          mountPath: /config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
         - name: audiobookshelf-metadata
-          mountPath: /metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
         - name: audiobookshelf-audiobooks
-          mountPath: /audiobooks
-
-restartPolicy: Always
-
-volumes:
-  - name: audiobookshelf-config
-    persistentVolumeClaim:
-      claimName: audiobookshelf-config
-  - name: audiobookshelf-metadata
-    persistentVolumeClaim:
-      claimName: audiobookshelf-metadata
-  - name: audiobookshelf-audiobooks
-    persistentVolumeClaim:
-      claimName: audiobookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks
