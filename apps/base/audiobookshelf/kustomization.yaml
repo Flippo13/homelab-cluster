@@ -4,6 +4,6 @@ resources:
 - namespace.yaml
 - service.yaml
 - deployment.yaml
-- audiobookshelf_config.yaml
-- storgage.yaml
+- audiobookshelf-config.yaml
+- storage.yaml
 
