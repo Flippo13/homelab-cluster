@@ -38,3 +38,7 @@ spec:
 
         hosts:
           - grs.fdenatris.eu 
+        tls:
+          - secretName: grafana-tls
+            hosts:
+              - grs.fdenatris.eu
