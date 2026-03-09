@@ -20,6 +20,8 @@ spec:
       envFrom:
         - configMapRef:
             name: audiobookshelf-config
+
+            
       volumeMounts:
             - mountPath: /config
               name: audiobookshelf-config
