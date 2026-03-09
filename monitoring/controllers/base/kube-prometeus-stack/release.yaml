@@ -31,3 +31,10 @@ spec:
   values:
     grafana:
       adminPassword: felix
+      ingress:
+        enabled: true 
+
+        ingressClassName: traefik
+
+        hosts:
+          - grs.fdenatris.eu 
