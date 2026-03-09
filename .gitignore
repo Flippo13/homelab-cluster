@@ -1,4 +1,4 @@
 .envrc
-.key
-.crt
+*.key
+*.crt
 kubeconfig
