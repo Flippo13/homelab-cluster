@@ -5,4 +5,5 @@ resources:
 - service.yaml
 - deployment.yaml
 - audiobookshelf_config.yaml
+- storgage.yaml
 
