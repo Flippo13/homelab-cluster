@@ -5,7 +5,7 @@ metadata:
 spec: 
     ports:
       - port: 3005
-       
+        targetPort:  # Assuming your container listens on port 80
     selector: 
         app: audiobookshelf
     type: ClusterIP 
