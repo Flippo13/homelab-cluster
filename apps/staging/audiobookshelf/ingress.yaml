@@ -2,18 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: audiobookshelf
+  namespace: audiobookshelf
   annotations:
-    # Common annotations - customize based on your ingress controller
-    # For Traefik:
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: default-redirectscheme@kubernetescrd
-    # For Nginx:
-    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    # For cert-manager (if using Let's Encrypt):
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: traefik  # Change to "nginx" if using Nginx Ingress
+  ingressClassName: traefik
   rules:
   - host: audiobookshelf.fdenatris.eu
     http:
@@ -25,15 +18,3 @@ spec:
             name: audiobookshelf
             port:
               number: 3005
-  # TLS configuration - using your existing certs
-  # Option 1: Use your existing TLS cert/key (manual)
-  # Uncomment and update if you want to use your tls.crt/tls.key
-  # tls:
-  # - hosts:
-  #   - audiobookshelf.fdenatris.eu
-  #   secretName: audiobookshelf-tls
-  # Option 2: Use cert-manager with Let's Encrypt (recommended)
-  # tls:
-  # - hosts:
-  #   - audiobookshelf.fdenatris.eu
-  #   secretName: audiobookshelf-tls
