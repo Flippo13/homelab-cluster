@@ -18,23 +18,17 @@ spec:
           ports:
             - containerPort: 3005
               protocol: TCP
-              
-      envFrom:
-        - configMapRef:
-            name: audiobookshelf-config
-
-
-      volumeMounts:
+          envFrom:
+            - configMapRef:
+                name: audiobookshelf-config
+          volumeMounts:
             - mountPath: /config
               name: audiobookshelf-config
             - mountPath: /metadata
               name: audiobookshelf-metadata
             - mountPath: /audiobooks
               name: audiobookshelf-audiobooks
-
-restartPolicy: Always
-
-volumes:
+      volumes:
   - name: audiobookshelf-config
     persistentVolumeClaim:
       claimName: audiobookshelf-config
