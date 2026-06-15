@@ -18,9 +18,13 @@ spec:
           ports:
             - containerPort: 3005
               protocol: TCP
-          envFrom:
-            - configMapRef:
-                name: audiobookshelf-config
+          env:
+            - name: PORT
+              value: "3005"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
           volumeMounts:
             - mountPath: /config
               name: audiobookshelf-config
@@ -29,12 +33,12 @@ spec:
             - mountPath: /audiobooks
               name: audiobookshelf-audiobooks
       volumes:
-  - name: audiobookshelf-config
-    persistentVolumeClaim:
-      claimName: audiobookshelf-config
-  - name: audiobookshelf-metadata
-    persistentVolumeClaim:
-      claimName: audiobookshelf-metadata
-  - name: audiobookshelf-audiobooks
-    persistentVolumeClaim:
-      claimName: audiobookshelf-audiobooks
+        - name: audiobookshelf-config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
+        - name: audiobookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+        - name: audiobookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks
