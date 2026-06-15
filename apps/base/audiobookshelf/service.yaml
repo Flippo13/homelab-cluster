@@ -6,6 +6,7 @@ spec:
     ports:
       - port: 3005
         targetPort: 3005
+        nodePort: 30005
     selector: 
         app: audiobookshelf
-    type: ClusterIP 
+    type: NodePort 
