@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: kavita
-          image: ghcr.io/kavitax/kavita:latest
+          image: ghcr.io/kareadita/kavita:latest
           ports:
             - containerPort: 5000
               protocol: TCP
