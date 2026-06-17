@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: book-uploader
+  namespace: kavita
+spec:
+  containers:
+  - name: uploader
+    image: alpine
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - name: books
+      mountPath: /books
+  volumes:
+  - name: books
+    persistentVolumeClaim:
+      claimName: kavita-books
