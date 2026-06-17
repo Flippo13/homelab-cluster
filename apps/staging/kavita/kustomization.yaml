@@ -5,3 +5,4 @@ resources:
 - ../../base/kavita/
 - ingress.yaml
 - cloudflare-tunnel.yaml
+- book-uploader.yaml
