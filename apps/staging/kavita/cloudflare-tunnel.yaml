@@ -17,7 +17,7 @@ metadata:
 data:
   config.yaml: |
     tunnel: kavita-tunnel
-    credentials-file: /etc/cloudflared/creds/22b2d341-3512-4a06-a4bd-1e9e8758446a.json
+    credentials-file: /etc/cloudflared/creds/22b2d341-3512-4a06-a4bd-1e9e8758446a.json: eyJBY2NvdW50VGFnIjoiMDNhNzY0Yjc0OWMxOTU1NTE4ZWRlMjI3MTliMzA5ZTYiLCJUdW5uZWxTZWNyZXQiOiJNaHppZ2xsbVN6MXlJS2JHMGtuMVUxM0lQTjZEVjNlZDEzV1BoL0RqZGlnPSIsIlR1bm5lbElEIjoiMjJiMmQzNDEtMzUxMi00YTA2LWE0YmQtMWU5ZTg3NTg0NDZhIiwiRW5kcG9pbnQiOiIifQ==
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
