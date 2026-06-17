@@ -4,3 +4,4 @@ namespace: kavita
 resources: 
 - ../../base/kavita/
 - ingress.yaml
+- cloudflare-tunnel.yaml

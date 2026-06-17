@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kavita-tunnel-credentials
+  namespace: kavita
+type: Opaque
+data:
+  # Replace with your base64-encoded credential file content
+  22b2d341-3512-4a06-a4bd-1e9e8758446a.json: PASTE_BASE64_HERE
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-kavita
+  namespace: kavita
+data:
+  config.yaml: |
+    tunnel: kavita-tunnel
+    credentials-file: /etc/cloudflared/creds/22b2d341-3512-4a06-a4bd-1e9e8758446a.json
+    metrics: 0.0.0.0:2000
+    no-autoupdate: true
+    ingress:
+    - hostname: kavita.fdenatris.eu
+      service: http://kavita:5000
+    - service: http_status:404
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared-kavita
+  namespace: kavita
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflared-kavita
+  template:
+    metadata:
+      labels:
+        app: cloudflared-kavita
+    spec:
+      containers:
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        args:
+        - tunnel
+        - --config
+        - /etc/cloudflared/config/config.yaml
+        - run
+        livenessProbe:
+          httpGet:
+            path: /ready
+            port: 2000
+          failureThreshold: 1
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        volumeMounts:
+        - name: config
+          mountPath: /etc/cloudflared/config
+          readOnly: true
+        - name: creds
+          mountPath: /etc/cloudflared/creds
+          readOnly: true
+      volumes:
+      - name: creds
+        secret:
+          secretName: kavita-tunnel-credentials
+      - name: config
+        configMap:
+          name: cloudflared-kavita
